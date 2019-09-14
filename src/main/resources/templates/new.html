@@ -64,33 +64,22 @@
 
 	<main role="main" class="container">
 
-	<div class="starter-template">
-		<h1>Bootstrap starter template</h1>
-		<p class="lead">
-			Use this document as a way to quickly start any new project.<br>
-			All you get is this text and a mostly barebones HTML document.
-		</p>
-		<span th:text="${nombre}"></span>
+	 <a th:href="@{/customers/list}" class="btn btn-primary">Regresar</a>
 
 
-	<a th:href="@{/customers/new}" class="btn btn-primary">Nuevo</a>
+	<form th:action="@{/customers/save/}" th:object="${customer}" method="post">
+		<div class="form-group">
+			<label for="txtNombre">Nombre</label> <input type="text"  th:field="*{name}"
+				class="form-control" id="" placeholder="Nombre">
+		</div>
+		<div class="form-group">
+			<label for="txtDni">Dni</label> <input type="text" th:field="*{dni}"
+				class="form-control" id="txtDni" placeholder="Nombre">
+		</div>
 
-		<table>
-			<thead>
-				<tr>
-					<th >Nombre</th>
-					<th >Dni</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr  th:each="c : ${clientes}">
-					<td th:text="${c.name}">Oranges</td>
-					<td th:text="${c.dni}">0.99</td>
-				</tr>
-			</tbody>
-		</table>
+		<input type="submit" class="btn btn-primary" value="Grabar" />
+	</form>
 
-	</div>
 
 	</main>
 	<!-- /.container -->
